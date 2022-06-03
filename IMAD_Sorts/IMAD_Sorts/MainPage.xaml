@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMAD_Sorts.MainPage"
+             BackgroundColor="Black">
+
+    <VerticalStackLayout 
+        Spacing="25" 
+        Padding="30,0" 
+        VerticalOptions="Center">
+        <HorizontalStackLayout x:Name ="horizSL"
+                               HorizontalOptions="Center"
+                               Spacing="1"
+                               VerticalOptions="End"
+                               HeightRequest="210">
+        </HorizontalStackLayout>
+        <Button x:Name="genValueBtn" 
+                Text="Generate Values" 
+                Clicked="GenerateValues" />
+
+        <Button x:Name="insertBtn" 
+                Text="Insertion Sort" 
+                Clicked="InsertionSort" />
+    </VerticalStackLayout>
+ 
+</ContentPage>
