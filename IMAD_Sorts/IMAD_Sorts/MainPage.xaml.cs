@@ -32,6 +32,102 @@ public partial class MainPage : ContentPage
         }
     }
 
+    public async void BubbleSort(object sender, EventArgs args)
+    {
+        ToggleButtons(false);
+        bool done = false;
+        int sorted = 0;
+
+        while (!done)
+        {
+            done = true;
+            for (int k = 0; k < labels.Count - sorted - 1; k++)
+            {
+                labels[k].BackgroundColor = ColorPicker.current;
+                labels[k + 1].BackgroundColor = ColorPicker.lookingAt;
+                await NextStep(delay);
+
+                if (Convert.ToInt32(labels[k].Text) > Convert.ToInt32(labels[k + 1].Text))
+                {
+                    Swap(labels, k, k + 1);
+                    await NextStep(delay);
+                    labels[k].BackgroundColor = ColorPicker.unsorted;
+                    done = false;
+                }
+                else
+                {
+                    labels[k].BackgroundColor = ColorPicker.unsorted;
+                }
+            }
+            sorted++;
+            labels[labels.Count - sorted].BackgroundColor = ColorPicker.sorted;
+        }
+        if (sorted < labels.Count)
+        {
+            await NextStep(delay);
+            for (int i = 0; i < labels.Count - sorted; i++)
+            {
+                labels[i].BackgroundColor = ColorPicker.sorted;
+            }
+        }
+        horizSL.Children.Clear();
+        foreach (var label in labels)
+        {
+            horizSL.Add(label);
+        }
+        ToggleButtons(true);
+    }
+
+    public async void SelectionSort(object sender, EventArgs args)
+    {
+        ToggleButtons(false);
+        for (int i = 0; i < labels.Count; i++)
+        {
+            int best = i;
+
+            labels[i].BackgroundColor = ColorPicker.current;
+            await NextStep(delay);
+
+            for (int j = i + 1; j < labels.Count; j++)
+            {
+                labels[j].BackgroundColor = ColorPicker.lookingAt;  
+                await NextStep(delay);
+
+                if (Convert.ToInt32(labels[j].Text) < Convert.ToInt32(labels[best].Text))
+                {
+                    if (best == i)
+                    {
+                        labels[i].BackgroundColor = ColorPicker.current;
+                    }
+                    else
+                    {
+                        labels[best].BackgroundColor = ColorPicker.unsorted;
+                    }
+                    best = j;
+                    labels[best].BackgroundColor = ColorPicker.best;
+                }
+                else
+                {
+                    labels[j].BackgroundColor = ColorPicker.unsorted;
+                }
+            }
+
+            if (best != i)
+            {
+                Swap(labels, i, best);
+                await NextStep(delay);
+            }
+            labels[best].BackgroundColor = ColorPicker.unsorted;
+            labels[i].BackgroundColor = ColorPicker.sorted;
+        }
+        horizSL.Children.Clear();
+        foreach (var label in labels)
+        {
+            horizSL.Add(label);
+        }
+        ToggleButtons(true);
+    }
+
     public async void InsertionSort(object sender, EventArgs args)
     {
         ToggleButtons(false);
@@ -85,6 +181,8 @@ public partial class MainPage : ContentPage
     void ToggleButtons(bool state)
     {
         genValueBtn.IsEnabled = state;
+        bubbleBtn.IsEnabled = state;
+        selectBtn.IsEnabled = state;
         insertBtn.IsEnabled = state;
     }
 
@@ -94,6 +192,7 @@ public partial class MainPage : ContentPage
         public static Color lookingAt = Colors.Cyan;
         public static Color unsorted = Colors.Grey;
         public static Color current = Colors.Yellow;
+        public static Color best = Colors.Red;
     }
 }
 

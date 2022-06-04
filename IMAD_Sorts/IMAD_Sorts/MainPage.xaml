@@ -18,6 +18,14 @@
                 Text="Generate Values" 
                 Clicked="GenerateValues" />
 
+        <Button x:Name="bubbleBtn" 
+                Text="Bubble Sort" 
+                Clicked="BubbleSort" />
+        
+        <Button x:Name="selectBtn" 
+                Text="Selection Sort" 
+                Clicked="SelectionSort" />
+        
         <Button x:Name="insertBtn" 
                 Text="Insertion Sort" 
                 Clicked="InsertionSort" />
