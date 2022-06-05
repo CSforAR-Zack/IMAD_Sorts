@@ -14,21 +14,23 @@
                                VerticalOptions="End"
                                HeightRequest="210">
         </HorizontalStackLayout>
-        <Button x:Name="genValueBtn" 
+        <HorizontalStackLayout Spacing="5"
+                               HorizontalOptions="Center">
+            <Button x:Name="genValueBtn" 
                 Text="Generate Values" 
                 Clicked="GenerateValues" />
 
-        <Button x:Name="bubbleBtn" 
+            <Button x:Name="bubbleBtn" 
                 Text="Bubble Sort" 
                 Clicked="BubbleSort" />
-        
-        <Button x:Name="selectBtn" 
+
+            <Button x:Name="selectBtn" 
                 Text="Selection Sort" 
                 Clicked="SelectionSort" />
-        
-        <Button x:Name="insertBtn" 
+
+            <Button x:Name="insertBtn" 
                 Text="Insertion Sort" 
                 Clicked="InsertionSort" />
-    </VerticalStackLayout>
- 
+        </HorizontalStackLayout>
+    </VerticalStackLayout> 
 </ContentPage>

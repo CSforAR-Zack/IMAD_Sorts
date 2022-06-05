@@ -56,6 +56,7 @@ public partial class MainPage : ContentPage
                 }
                 else
                 {
+                    await NextStep(delay);
                     labels[k].BackgroundColor = ColorPicker.unsorted;
                 }
             }
@@ -70,11 +71,7 @@ public partial class MainPage : ContentPage
                 labels[i].BackgroundColor = ColorPicker.sorted;
             }
         }
-        horizSL.Children.Clear();
-        foreach (var label in labels)
-        {
-            horizSL.Add(label);
-        }
+        await NextStep(delay);
         ToggleButtons(true);
     }
 
@@ -105,9 +102,11 @@ public partial class MainPage : ContentPage
                     }
                     best = j;
                     labels[best].BackgroundColor = ColorPicker.best;
+                    await NextStep(delay);
                 }
                 else
                 {
+                    await NextStep(delay);
                     labels[j].BackgroundColor = ColorPicker.unsorted;
                 }
             }
@@ -115,16 +114,12 @@ public partial class MainPage : ContentPage
             if (best != i)
             {
                 Swap(labels, i, best);
-                await NextStep(delay);
             }
+            await NextStep(delay);
             labels[best].BackgroundColor = ColorPicker.unsorted;
             labels[i].BackgroundColor = ColorPicker.sorted;
         }
-        horizSL.Children.Clear();
-        foreach (var label in labels)
-        {
-            horizSL.Add(label);
-        }
+        await NextStep(delay);
         ToggleButtons(true);
     }
 
@@ -133,7 +128,6 @@ public partial class MainPage : ContentPage
         ToggleButtons(false);
 
         labels[0].BackgroundColor = ColorPicker.sorted;
-        await NextStep(delay);
 
         for (int j = 1; j < labels.Count; j++)
         {
@@ -148,16 +142,11 @@ public partial class MainPage : ContentPage
                 await NextStep(delay);
                 Swap(labels, k, k + 1);
                 labels[k + 1].BackgroundColor = ColorPicker.sorted;
-                await NextStep(delay);
                 k--;
             }
             labels[k + 1].BackgroundColor = ColorPicker.sorted;
         }
-        horizSL.Children.Clear();
-        foreach (var label in labels)
-        {
-            horizSL.Add(label);
-        }
+        await NextStep(delay);
         ToggleButtons(true);
     }
 
