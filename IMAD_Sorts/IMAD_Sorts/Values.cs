@@ -9,7 +9,7 @@ public class Values
 
     public List<Label> Labels { get { return labels; } }
 
-    public Values(int numValues, HorizontalStackLayout hsl, int offset)
+    public Values(int numValues, HorizontalStackLayout hsl)
     {
         this.numValues = numValues;
         this.hsl = hsl;

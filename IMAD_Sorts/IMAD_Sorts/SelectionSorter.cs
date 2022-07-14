@@ -19,7 +19,7 @@ public class SelectionSorter : Sorter
 
             for (int j = i + 1; j < this.values.Labels.Count; j++)
             {
-                ColorPicker.SetColor(this.values.Labels[j], "lookintAt");  
+                ColorPicker.SetColor(this.values.Labels[j], "lookingAt");  
                 await this.Pause(delay);
 
                 if (Convert.ToInt32(this.values.Labels[j].Text) < Convert.ToInt32(this.values.Labels[best].Text))

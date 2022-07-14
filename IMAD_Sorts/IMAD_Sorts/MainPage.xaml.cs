@@ -2,6 +2,8 @@
 
 public partial class MainPage : ContentPage
 {
+    int numValues = 50;
+    int delay = 50;
     Values values = null;
     BubbleSorter bSort = null;
     SelectionSorter sSort = null;
@@ -10,10 +12,10 @@ public partial class MainPage : ContentPage
     public MainPage()
 	{
 		InitializeComponent();
-        values = new Values(20, horizSL);
-        bSort = new BubbleSorter(values, 100);
-        sSort = new SelectionSorter(values, 100);
-        iSort = new InsertionSorter(values, 100);
+        values = new Values(numValues, horizSL);
+        bSort = new BubbleSorter(values, delay);
+        sSort = new SelectionSorter(values, delay);
+        iSort = new InsertionSorter(values, delay);
     }
 
 	public void GenerateValues(object sender, EventArgs args)
@@ -23,31 +25,17 @@ public partial class MainPage : ContentPage
 
     public void BubbleSort(object sender, EventArgs args)
     {
-        this.ToggleButtons(false);
         bSort.Sort();
-        this.ToggleButtons(true);
     }
 
     public void SelectionSort(object sender, EventArgs args)
     {
-        this.ToggleButtons(false);
         sSort.Sort();
-        this.ToggleButtons(true);
     }
 
     public void InsertionSort(object sender, EventArgs args)
     {
-        this.ToggleButtons(false);
         iSort.Sort();
-        this.ToggleButtons(true);
-    }
-
-    void ToggleButtons(bool state)
-    {
-        genValueBtn.IsEnabled = state;
-        bubbleBtn.IsEnabled = state;
-        selectBtn.IsEnabled = state;
-        insertBtn.IsEnabled = state;
     }
 }
 
