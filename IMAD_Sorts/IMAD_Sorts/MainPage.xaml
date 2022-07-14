@@ -5,8 +5,7 @@
              BackgroundColor="Black">
 
     <VerticalStackLayout 
-        Spacing="25" 
-        Padding="30,0" 
+        Spacing="5"
         VerticalOptions="Center">
         <HorizontalStackLayout x:Name ="horizSL"
                                HorizontalOptions="Center"
@@ -14,11 +13,13 @@
                                VerticalOptions="End"
                                HeightRequest="210">
         </HorizontalStackLayout>
-        <HorizontalStackLayout Spacing="5"
-                               HorizontalOptions="Center">
-            <Button x:Name="genValueBtn" 
+        
+        <Button x:Name="genValueBtn" 
                 Text="Generate Values" 
                 Clicked="GenerateValues" />
+        
+        <HorizontalStackLayout Spacing="5"
+                               HorizontalOptions="Center">
 
             <Button x:Name="bubbleBtn" 
                 Text="Bubble Sort" 
